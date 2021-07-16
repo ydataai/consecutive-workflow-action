@@ -1,7 +1,7 @@
 # Workflow Consecutivizer
 
 Wait for a previous workflow run to complete.
-test2
+test3
 
 ## Usage
 
