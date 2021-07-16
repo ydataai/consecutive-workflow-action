@@ -32,8 +32,9 @@ async function run() {
         })
       }
       core.info(`Last run (${lastRun.id}) has completed.`)
+    } else {
+      core.info(`This is the first time this workflow runs. No checks needed.`)
     }
-    core.info(`This is the first time this workflow runs. No checks needed.`)
   } catch (error) {
     core.setFailed(error.message)
   }
