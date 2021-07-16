@@ -18,4 +18,6 @@ jobs:
     runs-on: ubuntu-latest
     needs: [ ready ]
     steps:
-    - run: echo "Previous workflow runs have completed!"
+    - run: |
+        echo "Previous workflow runs have completed!"
+        sleep 10
