@@ -30,6 +30,7 @@ async function run() {
           repo,
           run_id: lastRun.id,
         })
+        console.log(JSON.stringify(updatedRun, null, 2))
         lastRun = updatedRun
       }
       core.info(`Last run (${lastRun.id}) has completed.`)

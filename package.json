@@ -1,7 +1,7 @@
 {
-  "name": "workflow-consecutivizer",
+  "name": "consecutive-workflow-action",
   "version": "1.0.0",
-  "description": "Wait for a previous workflow run to complete.",
+  "description": "Make workflow runs run consecutively.",
   "main": "index.js",
   "scripts": {
     "lint": "eslint .",
@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mktcode/workflow-consecutivizer.git"
+    "url": "git+https://github.com/mktcode/consecutive-workflow-action.git"
   },
   "keywords": [
     "GitHub",
@@ -22,9 +22,9 @@
   "author": "mktcode",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/mktcode/workflow-consecutivizer/issues"
+    "url": "https://github.com/mktcode/consecutive-workflow-action/issues"
   },
-  "homepage": "https://github.com/mktcode/workflow-consecutivizer#readme",
+  "homepage": "https://github.com/mktcode/consecutive-workflow-action#readme",
   "dependencies": {
     "@actions/core": "^1.2.5",
     "@actions/github": "^5.0.0"

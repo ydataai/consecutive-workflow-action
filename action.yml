@@ -1,5 +1,5 @@
-name: Workflow Consecutivizer
-description: Wait for a previous workflow run to complete.
+name: Consecutive Workflow Action
+description: Make workflow runs run consecutively.
 inputs:
   workflow-id:
     description: The ID or filename of the workflow.
