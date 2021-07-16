@@ -32,8 +32,10 @@ Please read [this section in the docs](https://docs.github.com/en/actions/learn-
 There is a `v1` branch and tag for this action and you can simply decide to trust me. I recommend using a commit hash instead though.
 
 ```yaml
-- uses: mktcode/consecutive-workflow-action@39ba0848b0310d474660424e02e2dbf7dd01db2b
+- uses: mktcode/consecutive-workflow-action@cb3605cc3ab767c170434b0cfb6b522d193b7d57
 ```
+
+Review [the repo at this commit](https://github.com/mktcode/consecutive-workflow-action/tree/cb3605cc3ab767c170434b0cfb6b522d193b7d57).
 
 # Alternatives
 
