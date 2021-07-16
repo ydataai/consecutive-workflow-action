@@ -10,7 +10,7 @@ inputs:
   interval:
     description: The interval in which to check for a status update
     required: false
-    default: 60
+    default: 10
 runs:
   using: node12
   main: dist/index.js
