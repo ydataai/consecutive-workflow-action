@@ -32,7 +32,7 @@ async function run() {
       while (lastRun.status !== 'completed') {
         core.info(`Last run (${lastRun.id}) not completed yet. Waiting for ${interval} seconds.`)
         await sleep(interval)
-        let { data: lastRun } = octokit.rest.actions.getWorkflowRun({
+        let { data: lastRun } = await octokit.rest.actions.getWorkflowRun({
           owner,
           repo,
           run_id: lastRun.id,
