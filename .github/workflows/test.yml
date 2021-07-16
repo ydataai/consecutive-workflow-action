@@ -12,6 +12,7 @@ jobs:
     - uses: ./
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
+    - run: echo "${{ env.GITHUB_ACTION }}"
 
   # unit tests
   units:
