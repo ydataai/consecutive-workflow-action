@@ -36,6 +36,7 @@ async function run() {
         run_id: lastRun.id,
       })
     }
+    core.info(`Last run (${lastRun.id}) has completed.`)
   } catch (error) {
     core.setFailed(error.message)
   }
