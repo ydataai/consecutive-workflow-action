@@ -7,6 +7,10 @@ inputs:
   token:
     description: An access token to read information about workflows. (secrets.GITHUB_TOKEN)
     required: true
+  interval:
+    description: The interval in which to check for a status update
+    required: false
+    default: 60
 runs:
   using: node12
   main: dist/index.js
