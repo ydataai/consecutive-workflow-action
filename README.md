@@ -24,3 +24,16 @@ jobs:
     steps:
     # ...
 ```
+
+# Alternatives
+
+I also found these actions, which might better suit your needs:
+
+- https://github.com/lewagon/wait-on-check-action
+- https://github.com/fountainhead/action-wait-for-check
+
+Their purpose is slightly different. You can wait for certain checks to pass and therefore you can specify a certain ref and you can wait for runs of different workflows.
+
+**My action does only one thing: It forces runs of the same workflow to run in consecutive order.**
+
+I needed this because I let my workflows push to the repo a lot, which fails when one run pushes in between checkout and push in another run.
