@@ -10,7 +10,7 @@ Create a comment [here](https://github.com/mktcode/consecutive-workflow-action/i
 
 ```yaml
 jobs:
-  ready:
+  consecutiveness:
     runs-on: ubuntu-latest
     steps:
     - uses: mktcode/consecutive-workflow-action@v1
@@ -18,9 +18,9 @@ jobs:
         token: ${{ secrets.GITHUB_TOKEN }}
 
   # your other jobs
-  units:
+  something:
     runs-on: ubuntu-latest
-    needs: [ ready ]
+    needs: [ consecutiveness ]
     steps:
     # ...
 ```

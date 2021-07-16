@@ -4,7 +4,7 @@ on:
 
 jobs:
   # only run this workflow if the previous run has completed
-  ready:
+  consecutiveness:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
@@ -15,7 +15,7 @@ jobs:
   # some other job
   something:
     runs-on: ubuntu-latest
-    needs: [ ready ]
+    needs: [ consecutiveness ]
     steps:
     - run: |
         echo "Previous workflow runs have completed!"
