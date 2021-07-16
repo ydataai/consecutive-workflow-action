@@ -9,16 +9,11 @@ async function run() {
     const token = core.getInput('token')
     const workflowId = core.getInput('workflow-id')
     const octokit = github.getOctokit(token)
-    
-    console.log(
-      github.context.payload.repository.owner.login,
-      github.context.payload.repository.name,
-      workflowId
-    )
+
     const { data: runs } = await octokit.rest.actions.listWorkflowRuns({
       owner: github.context.payload.repository.owner.login,
       repo: github.context.payload.repository.name,
-      workflowId,
+      workflow_id: workflowId,
     })
 
     core.info(JSON.stringify(runs, null, 2))
