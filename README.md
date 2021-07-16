@@ -23,7 +23,7 @@ jobs:
     # ...
 ```
 
-**Security Note:**
+### Security Note:
 
 The token is needed to avoid rate limitation issues when performing API calls. I was thinking about making that optional but decided to just make you aware of the security risk and how to avoid it.
 
