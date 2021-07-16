@@ -1,7 +1,6 @@
 name: Demo
 on:
-  push:
-    branches: [ main ]
+  issue_comment:
 
 jobs:
   # only run this workflow if the previous run has completed
