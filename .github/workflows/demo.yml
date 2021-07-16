@@ -10,7 +10,6 @@ jobs:
     - uses: actions/checkout@v2
     - uses: ./
       with:
-        workflow-id: demo.yml
         token: ${{ secrets.GITHUB_TOKEN }}
 
   # some other job
