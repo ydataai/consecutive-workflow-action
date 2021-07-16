@@ -23,8 +23,7 @@ async function run() {
     const repo = github.context.payload.repository.name
 
     // fetch the latest workflow runs and find the last one before the currently running one
-    const { data: runs } = await octokit.rest.actions.listWorkflowRuns({ owner, repo, workflow_id })
-    console.log(JSON.stringify(runs))
+    const { data: { workflow_runs: runs } } = await octokit.rest.actions.listWorkflowRuns({ owner, repo, workflow_id })
     let lastRun = runs.find(run => run.run_number === github.context.runNumber - 1)
 
     // re-check in intervals, as long as it has not completed
