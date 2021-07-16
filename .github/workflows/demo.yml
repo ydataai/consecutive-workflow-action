@@ -1,24 +1,22 @@
-name: Unit Tests
+name: Demo
 on:
   push:
     branches: [ main ]
 
 jobs:
-  # only run this workflow if the previous one has completed
+  # only run this workflow if the previous run has completed
   ready:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
     - uses: ./
       with:
-        workflow-id: test.yml
+        workflow-id: demo.yml
         token: ${{ secrets.GITHUB_TOKEN }}
 
-  # unit tests
+  # some other job
   units:
     runs-on: ubuntu-latest
     needs: [ ready ]
     steps:
-    - uses: actions/checkout@v2
-    - run: npm ci
-    - run: npm test
+    - run: echo "Previous workflow runs have completed!"
