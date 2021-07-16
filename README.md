@@ -4,8 +4,6 @@ Make workflow runs run consecutively.
 
 Create a comment [here](https://github.com/mktcode/consecutive-workflow-action/issues/5) and delete it immediately and then go to the [Actions tab](https://github.com/mktcode/consecutive-workflow-action/actions) to see how the second workflow run waits for the previous one.
 
-![image](https://user-images.githubusercontent.com/6792578/125954347-83441667-a897-4e1e-85db-9b971b4201d1.png)
-
 ## Usage
 
 ```yaml
@@ -23,6 +21,18 @@ jobs:
     needs: [ consecutiveness ]
     steps:
     # ...
+```
+
+**Security Note:**
+
+The token is needed to avoid rate limitation issues when performing API calls. I was thinking about making that optional but decided to just make you aware of the security risk and how to avoid it.
+
+Please read [this section in the docs](https://docs.github.com/en/actions/learn-github-actions/security-hardening-for-github-actions#using-third-party-actions) before using some random action that asks for your secrets.
+
+There is a `v1` branch and tag for this action and you can simply decide to trust me. I recommend using a commit hash instead though.
+
+```yaml
+- uses: mktcode/consecutive-workflow-action@39ba0848b0310d474660424e02e2dbf7dd01db2b
 ```
 
 # Alternatives
