@@ -22,6 +22,9 @@ async function run() {
     const owner = github.context.payload.repository.owner.login
     const repo = github.context.payload.repository.name
 
+    // get workflow id from current run
+    console.log(JSON.stringify(github))
+
     // fetch the latest workflow runs and find the last one before the currently running one
     const { data: { workflow_runs: runs } } = await octokit.rest.actions.listWorkflowRuns({ owner, repo, workflow_id })
     // to take into account that runs can be deleted: sort runs by number and pick the first with a number smaller than the current one
@@ -37,7 +40,6 @@ async function run() {
           repo,
           run_id: lastRun.id,
         })
-        console.log(JSON.stringify(updatedRun, null, 2))
         lastRun = updatedRun
       }
       core.info(`Last run (${lastRun.id}) has completed.`)
