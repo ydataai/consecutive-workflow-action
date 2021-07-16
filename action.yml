@@ -1,6 +1,9 @@
 name: Workflow Consecutivizer
 description: Wait for a previous workflow run to complete.
 inputs:
+  workflow-id:
+    description: The ID or filename of the workflow.
+    required: true
   token:
     description: An access token to read information about workflows. (secrets.GITHUB_TOKEN)
     required: true
