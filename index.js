@@ -31,7 +31,7 @@ async function run() {
     // re-check in intervals, as long as it has not completed
     console.log(lastRuns)
     if (lastRuns) {
-      core.info(`Found active workflow runs (${JSON.strinfigy(lastRuns.map(obj => obj.id))}).`)
+      core.info(`Found active workflow runs (${JSON.stringify(lastRuns.map(obj => obj.id))}).`)
 
       for (let lastRun of lastRuns) {
         while (lastRun.status !== 'completed') {
