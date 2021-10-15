@@ -29,7 +29,6 @@ async function run() {
     // to take into account that runs can be deleted: sort runs by number and pick the runs with a number smaller than the current one
     let lastRuns = runs.sort((a, b) => b.run_number - a.run_number).filter(run => run.run_number < currentRun.run_number)
     
-    
     // re-check in intervals, as long as it has not completed
     console.log(lastRuns)
     if (lastRuns) {
