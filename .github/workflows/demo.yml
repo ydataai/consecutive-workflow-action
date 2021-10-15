@@ -6,7 +6,6 @@ jobs:
   # only run this workflow if the previous run has completed
   consecutiveness:
     runs-on: ubuntu-latest
-    if: ${{ github.event.issue.title == 'Demo' }}
     steps:
     - uses: actions/checkout@v2
     - uses: ./

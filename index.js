@@ -21,17 +21,15 @@ async function run() {
       run_id: github.context.runId,
     })
 
-    // fetch the lastest workflow runs queued and in_progress
-    const { data: { workflow_runs: queued } } = await octokit.rest.actions.listWorkflowRuns({ owner, repo, status: 'queued', workflow_id: currentRun.workflow_id })
-    const { data: { workflow_runs: inProgress } } = await octokit.rest.actions.listWorkflowRuns({ owner, repo, status: 'in_progress', workflow_id: currentRun.workflow_id })
-    const runs = [ ...queued, ...inProgress ]
+    // fetch the lastest workflow runs in_progress
+    const { data: { workflow_runs: runs } } = await octokit.rest.actions.listWorkflowRuns({ owner, repo, status: 'in_progress', workflow_id: currentRun.workflow_id })
 
     // to take into account that runs can be deleted: sort runs by number and pick the runs with a number smaller than the current one
     let lastRuns = runs.sort((a, b) => b.run_number - a.run_number).filter(run => run.run_number < currentRun.run_number)
     
     // re-check in intervals, as long as it has not completed
-    if (lastRuns) {
-      core.info(`Found active workflow runs (${JSON.stringify(lastRuns.map(obj => obj.id))}).`)
+    if (lastRuns && lastRuns.length) {
+      core.info(`Found active workflow runs (${lastRuns.map(obj => obj.id)}).`)
 
       for (let lastRun of lastRuns) {
         while (lastRun.status !== 'completed') {
