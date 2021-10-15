@@ -27,11 +27,11 @@ async function run() {
     // to take into account that runs can be deleted: sort runs by number and pick the runs with a number smaller than the current one
     let lastRuns = runs.sort((a, b) => b.run_number - a.run_number).filter(run => run.run_number < currentRun.run_number)
     
-    let lastRunsIds = lastRuns.map(obj => obj.id)
-    core.info(`Found not completed runs (${lastRunsIds}).`)
     
     // re-check in intervals, as long as it has not completed
     if (lastRuns) {
+      core.info(`Found active workflow runs (${lastRuns.map(obj => obj.id)}).`)
+
       for (let lastRun of lastRuns) {
         while (lastRun.status !== 'completed') {
             core.info(`Run (${lastRun.id}) not completed yet. Waiting for ${interval} seconds.`)
@@ -46,7 +46,7 @@ async function run() {
           core.info(`Run (${lastRun.id}) has completed.`)
       }
     } else {
-      core.info(`This is the first time this workflow runs. No checks needed.`)
+      core.info(`No active workflow runs found.`)
     }
   } catch (error) {
     core.setFailed(error.message)
