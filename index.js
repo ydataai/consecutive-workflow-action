@@ -28,7 +28,7 @@ async function run() {
     let lastRuns = runs.sort((a, b) => b.run_number - a.run_number).filter(run => run.run_number < currentRun.run_number)
     
     let lastRunsIds = lastRuns.map(obj => obj.id)
-    core.info(`Checking runs (${lastRunsIds}).`)
+    core.info(`Found not completed runs (${lastRunsIds}).`)
     
     // re-check in intervals, as long as it has not completed
     if (lastRuns) {
