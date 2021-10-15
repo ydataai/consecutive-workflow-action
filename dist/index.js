@@ -6545,7 +6545,7 @@ async function run() {
     })
 
     // fetch the lastest workflow runs in_progress
-    const { data: { workflow_runs: runs } } = await octokit.rest.actions.listWorkflowRuns({ owner, repo, status: 'in_progress', workflow_id: currentRun.workflow_id })
+    const { data: { workflow_runs: runs } } = await octokit.rest.actions.listWorkflowRuns({ owner, repo, status: 'in_progress,queued', workflow_id: currentRun.workflow_id })
 
     // to take into account that runs can be deleted: sort runs by number and pick the runs with a number smaller than the current one
     let lastRuns = runs.sort((a, b) => b.run_number - a.run_number).filter(run => run.run_number < currentRun.run_number)
