@@ -11,7 +11,7 @@ jobs:
   consecutiveness:
     runs-on: ubuntu-latest
     steps:
-    - uses: mktcode/consecutive-workflow-action@v1
+    - uses: mktcode/consecutive-workflow-action@v1 # please read security note
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
 
