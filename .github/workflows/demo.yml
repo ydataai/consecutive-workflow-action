@@ -10,7 +10,6 @@ jobs:
     - uses: actions/checkout@v2
     - uses: ./
       with:
-        interval: 30
         token: ${{ secrets.GITHUB_TOKEN }}
 
   # some other job
@@ -20,4 +19,4 @@ jobs:
     steps:
     - run: |
         echo "Previous workflow runs have completed!"
-        sleep 10
+        sleep 60
