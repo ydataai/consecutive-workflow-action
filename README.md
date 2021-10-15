@@ -11,7 +11,7 @@ jobs:
   consecutiveness:
     runs-on: ubuntu-latest
     steps:
-    - uses: mktcode/consecutive-workflow-action@v1 # please read security note
+    - uses: mktcode/consecutive-workflow-action@v1
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
 
@@ -32,7 +32,7 @@ Please read [this section in the docs](https://docs.github.com/en/actions/learn-
 There is a `v1` branch and tag for this action and you can simply decide to trust me. I recommend using a commit hash instead though.
 
 ```yaml
-- uses: mktcode/consecutive-workflow-action@0b779df0b7f31f656194b3aa004cc29dd406393b
+- uses: mktcode/consecutive-workflow-action@cb3605cc3ab767c170434b0cfb6b522d193b7d57
 ```
 
 Review [the repo at this commit](https://github.com/mktcode/consecutive-workflow-action/tree/cb3605cc3ab767c170434b0cfb6b522d193b7d57).
