@@ -8451,26 +8451,37 @@ function sleep(seconds) {
 
 async function run() {
   try {
-    const token = core.getInput('token')
-    const interval = core.getInput('interval')
+    //const token = core.getInput('token')
+    //const interval = core.getInput('interval')
+    //const octokit = github.getOctokit(token)
+
+    //const owner = github.context.payload.repository.owner.login
+    //const repo = github.context.payload.repository.name
+
+	const token = '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'
+    const interval = 20
     const octokit = github.getOctokit(token)
 
-    const owner = github.context.payload.repository.owner.login
-    const repo = github.context.payload.repository.name
+    const owner = 'ydataai'
+    const repo = 'test-pipelines'
+
+	
 
     // get current run (to know the workflow_id)
     let { data: currentRun } = await octokit.rest.actions.getWorkflowRun({
       owner,
       repo,
-      run_id: github.context.runId,
+      run_id: '1346662189',
     })
 
     // fetch the lastest workflow runs in_progress
-    const { data: { workflow_runs: runs } } = await octokit.rest.actions.listWorkflowRuns({ owner, repo, status: 'in_progress', workflow_id: currentRun.workflow_id })
+    const { data: { workflow_runs: queued } } = await octokit.rest.actions.listWorkflowRuns({ owner, repo, status: 'queued', workflow_id: currentRun.workflow_id })
+    const { data: { workflow_runs: inProgress } } = await octokit.rest.actions.listWorkflowRuns({ owner, repo, status: 'in_progress', workflow_id: currentRun.workflow_id })
+    const runs = [ ...queued, ...inProgress ]
 
     // to take into account that runs can be deleted: sort runs by number and pick the runs with a number smaller than the current one
     let lastRuns = runs.sort((a, b) => b.run_number - a.run_number).filter(run => run.run_number < currentRun.run_number)
-    
+
     // re-check in intervals, as long as it has not completed
     if (lastRuns && lastRuns.length) {
       core.info(`Found active workflow runs (${lastRuns.map(obj => obj.id)}).`)
