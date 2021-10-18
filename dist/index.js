@@ -8451,27 +8451,18 @@ function sleep(seconds) {
 
 async function run() {
   try {
-    //const token = core.getInput('token')
-    //const interval = core.getInput('interval')
-    //const octokit = github.getOctokit(token)
-
-    //const owner = github.context.payload.repository.owner.login
-    //const repo = github.context.payload.repository.name
-
-	const token = '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'
-    const interval = 20
+    const token = core.getInput('token')
+    const interval = core.getInput('interval')
     const octokit = github.getOctokit(token)
 
-    const owner = 'ydataai'
-    const repo = 'test-pipelines'
-
-	
+    const owner = github.context.payload.repository.owner.login
+    const repo = github.context.payload.repository.name
 
     // get current run (to know the workflow_id)
     let { data: currentRun } = await octokit.rest.actions.getWorkflowRun({
       owner,
       repo,
-      run_id: '1346662189',
+      run_id: github.context.runId,
     })
 
     // fetch the lastest workflow runs in_progress
